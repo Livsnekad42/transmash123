@@ -111,12 +111,17 @@ function App() {
 
   function handleInput(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    axios.post('http://localhost:3000/add', worker).then(resp => console.log(resp));
+    axios.post('http://localhost:3000/add', worker).then(resp => {
+      console.log(resp)
+      getWorkers()
+    });
   }
 
-  useEffect(() => {
+  function getWorkers() {
     axios.get('http://localhost:3000/get-all').then(resp => setWorkers(resp.data));
-  }, [])
+  }
+
+  useEffect(() => getWorkers(), [])
 
   return (
     <div className="App">
