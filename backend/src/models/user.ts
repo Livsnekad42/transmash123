@@ -11,8 +11,8 @@ export interface IUser {
   createdAt?: Date
   updatedAt?: Date
 }
+
 export interface UserModel extends Model<IUser>, IUser {}
-// export class User extends Model<UserModel, IUser> {}
 
 export type UserStatic = typeof Model & {
   new (values?: object, options?: BuildOptions): UserModel

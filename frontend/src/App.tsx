@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 import axios from "axios";
-
+// @ts-ignore
+import Demo from "./Calendar";
+import MyCalendar from "./Cal";
 let config = {
   baseURL: ""
 }
@@ -194,6 +197,7 @@ function App() {
         </tbody>
       </table>
       </div>
+      <MyCalendar />
     </div>
   );
 }

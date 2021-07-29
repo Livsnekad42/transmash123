@@ -1,6 +1,5 @@
 import express from "express"
 import path from "path"
-import { dbConfig } from "./config/db"
 import { WorkerModels } from "./models/user"
 import { EXPRESS_PORT } from "./util/env"
 const cors = require("cors")
@@ -30,6 +29,7 @@ app.use(function (req, res, next) {
 })
 app.use("/", router)
 
+
 router.post("/post-test", (req, res, next) => {
   console.log("Got body post:", req.body)
   res.status(200).json(req.body).send(req.body)
@@ -48,10 +48,6 @@ router.get("/get-all", async (req, res, next) => {
 app.use((req, res, next) => {
   res.locals.user = req.user
   next()
-})
-
-dbConfig.sync({ force: true }).then((result) => {
-  console.log("Migrate DB")
 })
 
 app.get("/", async (_, res, next) => {
