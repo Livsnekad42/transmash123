@@ -29,7 +29,6 @@ app.use(function (req, res, next) {
 })
 app.use("/", router)
 
-
 router.post("/post-test", (req, res, next) => {
   console.log("Got body post:", req.body)
   res.status(200).json(req.body).send(req.body)
